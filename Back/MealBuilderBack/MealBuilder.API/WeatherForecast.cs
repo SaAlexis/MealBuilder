@@ -1,4 +1,4 @@
-namespace ModelBuilder.API
+namespace MealBuilder.API
 {
     public class WeatherForecast
     {

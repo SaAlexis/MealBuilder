@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace ModelBuilder.API.Controllers
+namespace MealBuilder.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
