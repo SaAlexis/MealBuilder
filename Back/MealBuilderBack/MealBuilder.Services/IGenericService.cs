@@ -1,15 +1,15 @@
 ﻿namespace MealBuilder.Services
 {
-    public interface IGenericService<T>
+    public interface IGenericService<TDto, TEntity>
     {
-        public Task<IEnumerable<T>> GetAll();
+        public Task<IEnumerable<TDto>> GetAll();
 
-        Task<T?> GetById (int id);
+        public Task<TDto?> GetById (int id);
 
-        Task<IEnumerable<T>> Insert (T entity);
+        public Task<TDto> Insert (TDto dto);
 
-        Task<bool> Delete (T entity);
+        public Task<bool> Delete (TEntity entity);
 
-        Task<bool> Update (T entity);
+        public Task<bool> Update (TEntity entity);
     }
 }

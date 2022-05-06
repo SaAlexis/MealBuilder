@@ -13,20 +13,20 @@ namespace MealBuilder.API.Controllers
     [ApiController]
     public class IngredientController : ControllerBase
     {
-        private IngredientService _ingredientService;
+        private IGenericService<IngredientDto, IngredientEntity> _ingredientService;
 
-        public IngredientController(IngredientService ingredientService)
+        public IngredientController(GenericService<IngredientDto, IngredientEntity> ingredientService)
         {
             _ingredientService = ingredientService;
         }
 
         // GET: api/<ValuesController>
         [HttpGet]
-        public IActionResult Get()
+        public virtual async Task<IActionResult> Get()
         {
             try
             {
-                var result = _ingredientService.GetAll();
+                var result = await _ingredientService.GetAll();
                 return Ok(result);
             }
             catch
@@ -37,15 +37,36 @@ namespace MealBuilder.API.Controllers
 
         // GET api/<ValuesController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public virtual async Task<IActionResult> Get(int id)
         {
-            return "value";
+            try
+            {
+                var result = await _ingredientService.GetById(id);
+                if(result != null)
+                {
+                    return Ok(result);
+                }
+                return NotFound();
+            }   
+            catch
+            {
+                return StatusCode(500);
+            }
         }
 
         // POST api/<ValuesController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> Post([FromBody] IngredientDto dto)
         {
+            try
+            {
+                var result = await _ingredientService.Insert(dto);
+                return Ok(result);
+            }
+            catch
+            {
+                return StatusCode(500);
+            }
         }
 
         // PUT api/<ValuesController>/5

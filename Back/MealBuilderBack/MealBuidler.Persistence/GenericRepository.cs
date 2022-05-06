@@ -13,20 +13,22 @@ namespace MealBuidler.Persistence
             DbContext = dbContext;
         }
 
-        public async Task<IEnumerable<T>> GetAll()
+        public virtual async Task<IEnumerable<T>> GetAll()
         {
-            return DbContext.Set<T>().ToList();
+            return await DbContext.Set<T>().ToListAsync();
         }
 
-        public T? Get(int id)
+        public virtual async Task<T?> GetById(int id)
         {
-            return DbContext.Set<T>().Find(id);
+            return await DbContext.Set<T>().FindAsync(id);
         }
 
-        public void Insert(T entity)
+        public virtual async Task<T> Insert(T entity)
         {
-            DbContext.Add(entity);
-            DbContext.SaveChanges();
+            var newEntity = DbContext.Attach(entity);
+            newEntity.State = EntityState.Added;
+            await DbContext.SaveChangesAsync();
+            return newEntity.Entity;
         }
 
         public bool Delete(int id)

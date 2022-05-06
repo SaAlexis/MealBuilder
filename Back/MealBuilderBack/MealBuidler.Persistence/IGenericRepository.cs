@@ -4,9 +4,9 @@
     {
         public Task<IEnumerable<T>> GetAll();
 
-        T? Get(int id);
+        public Task<T?> GetById(int id);
 
-        void Insert (T entity);
+        public Task<T> Insert (T entity);
 
         bool Delete (int id);
 

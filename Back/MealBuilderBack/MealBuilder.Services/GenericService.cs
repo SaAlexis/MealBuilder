@@ -1,47 +1,58 @@
-﻿//using AutoMapper;
-//using MealBuidler.Persistence;
-//using MealBuilder.DTOS;
-//using MealBuilder.Entities;
+﻿using AutoMapper;
+using MealBuidler.Persistence;
+using MealBuilder.DTOS;
+using MealBuilder.Entities;
 
-//namespace MealBuilder.Services
-//{
-//    public class GenericService<T> : IGenericService<TO> where T : class where TO : class,new()
-//    {
+namespace MealBuilder.Services
+{
+    public class GenericService<TDto, TEntity> : IGenericService<TDto, TEntity> 
+        where TDto : class, new()
+        where TEntity : class, new()
+    {
 
-//        private IMapper _mapper;
-//        private IGenericRepository<IngredientEntity> _genericRepository;
+        private IMapper _mapper;
+        private IGenericRepository<TEntity> _genericRepository;
 
-//        public GenericService(IGenericRepository<T> genericRepository, IMapper mapper)
-//        {
-//            _mapper = mapper;
+        public GenericService(IMapper mapper, IGenericRepository<TEntity> genericRepository)
+        {
+            _mapper = mapper;
+            _genericRepository = genericRepository;
+        }
 
-//        }
-        
+        public Task<bool> Delete(TEntity entity)
+        {
+            throw new NotImplementedException();
+        }
 
+        public virtual async Task<IEnumerable<TDto>> GetAll()
+        {
+            var ingredientEntity = await _genericRepository.GetAll();
+            var dto = _mapper.Map<IEnumerable<TDto>>(ingredientEntity);
+            return dto;
+        }
 
-//        public Task<bool> Delete(T entity)
-//        {
-//            throw new NotImplementedException();
-//        }
+        public virtual async Task<TDto?> GetById(int id)
+        {
+            var ingredientEntity = await _genericRepository.GetById(id);
+            if( ingredientEntity != null )
+            {
+                var dto = _mapper.Map<TDto>(ingredientEntity);
+                return dto;
+            }
+            return null;
+        }
 
-//        public Task<IEnumerable<T>> GetAll()
-//        {
-//            throw new NotImplementedException();
-//        }
+        public virtual async Task<TDto> Insert(TDto dto)
+        {
+            var entity = _mapper.Map<TEntity>(dto);
+            var entityInsert = await _genericRepository.Insert(entity);
+            var dtoInsert = _mapper.Map<TDto>(entityInsert);
+            return dtoInsert;
+        }
 
-//        public Task<T?> GetById(int id)
-//        {
-//            throw new NotImplementedException();
-//        }
-
-//        public Task<IEnumerable<T>> Insert(T entity)
-//        {
-//            throw new NotImplementedException();
-//        }
-
-//        public Task<bool> Update(T entity)
-//        {
-//            throw new NotImplementedException();
-//        }
-//    }
-//}
+        public Task<bool> Update(TEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
