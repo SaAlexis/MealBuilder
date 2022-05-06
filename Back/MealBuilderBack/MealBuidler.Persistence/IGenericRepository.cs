@@ -2,7 +2,7 @@
 {
     public interface IGenericRepository<T> where T : class, new()
     {
-        IEnumerable<T> GetAll();
+        public Task<IEnumerable<T>> GetAll();
 
         T? Get(int id);
 

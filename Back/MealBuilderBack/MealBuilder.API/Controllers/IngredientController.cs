@@ -1,4 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MealBuidler.Persistence;
+using MealBuilder.Entities;
+using AutoMapper;
+using MealBuilder.DTOS;
+using MealBuilder.Services;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -8,11 +13,26 @@ namespace MealBuilder.API.Controllers
     [ApiController]
     public class IngredientController : ControllerBase
     {
+        private IngredientService _ingredientService;
+
+        public IngredientController(IngredientService ingredientService)
+        {
+            _ingredientService = ingredientService;
+        }
+
         // GET: api/<ValuesController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            try
+            {
+                var result = _ingredientService.GetAll();
+                return Ok(result);
+            }
+            catch
+            {
+                return StatusCode(500);
+            }
         }
 
         // GET api/<ValuesController>/5
