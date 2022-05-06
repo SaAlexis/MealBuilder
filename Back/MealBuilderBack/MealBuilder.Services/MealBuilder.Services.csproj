@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MealBuidler.Persistence\MealBuidler.Persistence.csproj" />
     <ProjectReference Include="..\MealBuilder.DTOS\MealBuilder.DTOS.csproj" />
     <ProjectReference Include="..\MealBuilder.Entities\MealBuilder.Entities.csproj" />
   </ItemGroup>

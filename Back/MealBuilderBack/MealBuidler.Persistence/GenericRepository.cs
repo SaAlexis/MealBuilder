@@ -3,17 +3,17 @@
 namespace MealBuidler.Persistence
 {
 
-    public class DbGenericRepository<T> : IGenericRepository<T> where T : class, new()
+    public class GenericRepository<T> : IGenericRepository<T> where T : class, new()
     {
         private DbContext DbContext { get; }
 
 
-        public DbGenericRepository(DbContext dbContext)
+        public GenericRepository(DbContext dbContext)
         {
             DbContext = dbContext;
         }
 
-        public IEnumerable<T> GetAll()
+        public async Task<IEnumerable<T>> GetAll()
         {
             return DbContext.Set<T>().ToList();
         }

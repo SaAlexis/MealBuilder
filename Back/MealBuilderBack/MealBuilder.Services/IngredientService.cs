@@ -1,33 +1,30 @@
-﻿using MealBuilder.DTOS;
-
+﻿using AutoMapper;
+using MealBuidler.Persistence;
+using MealBuilder.DTOS;
+using MealBuilder.Entities;
 
 namespace MealBuilder.Services
 {
-    public class IngredientService : IGenericService<IngredientDto>
+    public class IngredientService
     {
-        public bool Delete(IngredientDto entity)
+        private IMapper _mapper;
+        private IGenericRepository<IngredientEntity> _genericRepository;
+
+
+
+        public IngredientService(IMapper mapper , IGenericRepository<IngredientEntity> genericRepository)
         {
-            throw new NotImplementedException();
+            _mapper = mapper;
+            _genericRepository = genericRepository;
         }
 
-        public IEnumerable<IngredientDto> GetAll()
+
+        public async Task<IEnumerable<IngredientDto>> GetAll()
         {
-            throw new NotImplementedException();
+            var ingredientEntity = await _genericRepository.GetAll();
+            var dto = _mapper.Map<IEnumerable<IngredientDto>>(ingredientEntity);
+            return dto;
         }
 
-        public IngredientDto? GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<IngredientDto> Insert(IngredientDto entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Update(IngredientDto entity)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

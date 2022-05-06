@@ -2,14 +2,14 @@
 {
     public interface IGenericService<T>
     {
-        IEnumerable<T> GetAll();
+        public Task<IEnumerable<T>> GetAll();
 
-        T? GetById (int id);
+        Task<T?> GetById (int id);
 
-        IEnumerable<T> Insert (T entity);
+        Task<IEnumerable<T>> Insert (T entity);
 
-        bool Delete (T entity);
+        Task<bool> Delete (T entity);
 
-        bool Update (T entity);
+        Task<bool> Update (T entity);
     }
 }
