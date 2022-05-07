@@ -8,7 +8,7 @@
 
         public Task<TDto> Insert (TDto dto);
 
-        public Task<bool> Delete (TEntity entity);
+        public Task<bool> Delete (int id);
 
         public Task<bool> Update (TEntity entity);
     }

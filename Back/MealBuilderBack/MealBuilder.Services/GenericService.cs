@@ -19,11 +19,6 @@ namespace MealBuilder.Services
             _genericRepository = genericRepository;
         }
 
-        public Task<bool> Delete(TEntity entity)
-        {
-            throw new NotImplementedException();
-        }
-
         public virtual async Task<IEnumerable<TDto>> GetAll()
         {
             var ingredientEntity = await _genericRepository.GetAll();
@@ -53,6 +48,16 @@ namespace MealBuilder.Services
         public Task<bool> Update(TEntity entity)
         {
             throw new NotImplementedException();
+        }
+
+        public virtual async Task<bool> Delete(int id)
+        {
+            var ingredientEntity = await _genericRepository.Delete(id);
+            if (ingredientEntity)
+            {
+                return ingredientEntity;
+            }
+            return false;
         }
     }
 }
