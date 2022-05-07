@@ -31,24 +31,24 @@ namespace MealBuidler.Persistence
             return newEntity.Entity;
         }
 
-        public bool Delete(int id)
-        {
-            T? item = DbContext.Set<T>().Find(id);
-            if (item != null)
-            {
-                DbContext.Remove(item);
-                DbContext.SaveChanges();
-                return true;
-            }
-            return false;
-        }
-
         public bool Update(T entity)
         {
             if (entity != null)
             {
                 DbContext.Update(entity);
                 DbContext.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+
+        public virtual async Task<bool> Delete(int id)
+        {
+            T? entity = await DbContext.Set<T>().FindAsync(id);
+            if (entity != null)
+            {
+                DbContext.Remove(entity);
+                await DbContext.SaveChangesAsync();
                 return true;
             }
             return false;

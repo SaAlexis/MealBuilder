@@ -8,8 +8,8 @@
 
         public Task<T> Insert (T entity);
 
-        bool Delete (int id);
-
         bool Update (T entity);
+
+        public Task<bool> Delete(int id);
     }
 }

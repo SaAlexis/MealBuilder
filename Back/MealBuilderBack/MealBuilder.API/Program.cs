@@ -16,10 +16,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-//builder.Services.AddScoped(typeof(IGenericService<,>), typeof(GenericService<,>));
 builder.Services.AddScoped<DbContext, DataBaseContext>();
-builder.Services.AddScoped(typeof(GenericService<,>), typeof(GenericService<,>));
-//builder.Services.AddScoped<IngredientService, IngredientService>();
+builder.Services.AddScoped(typeof(IGenericService<,>), typeof(GenericService<,>));
 builder.Services.AddDbContext<DataBaseContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConn")));
 
 var app = builder.Build();
