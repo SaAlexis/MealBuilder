@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MealBuidler.Persistence;
 using MealBuilder.Entities;
-using AutoMapper;
 using MealBuilder.DTOS;
 using MealBuilder.Services;
 

@@ -1,0 +1,20 @@
+<p>ingredient works!</p>
+
+    <div class="row">
+        <div class="col-md-4">
+            <app-recipe-list></app-recipe-list>
+        </div>
+        
+        <div class="col-md-1"></div>
+        
+        <div class="col-md-7">
+            <app-recipe-detail
+                *ngIf="_selectedRecipe._name !== ''; else infoText"
+                [_recipe]="_selectedRecipe"
+            ></app-recipe-detail>
+            <ng-template #infoText>
+                <p>Please select a Recipe</p>
+            </ng-template>
+        </div>
+    </div>
+
