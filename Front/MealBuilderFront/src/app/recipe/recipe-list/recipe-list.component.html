@@ -1,0 +1,18 @@
+    <div class="row">
+        <div class="col-md-12">
+            <app-recipe-edit></app-recipe-edit>
+        </div>
+    </div>
+    
+    <hr>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <app-recipe-item
+                *ngFor="let item of _recipes"
+                [_recipe]="item"
+            ></app-recipe-item>
+        </div>
+    </div>
+
+   
