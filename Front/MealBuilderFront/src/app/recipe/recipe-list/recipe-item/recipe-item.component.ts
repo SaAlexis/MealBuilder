@@ -9,6 +9,7 @@ import { Recipe } from '../../recipe-model';
 export class RecipeItemComponent implements OnInit {
 
   @Input() _recipe: Recipe = new Recipe('','','',[]);
+  @Input() _index: number = 0;
 
   ngOnInit(): void {
   }
