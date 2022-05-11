@@ -39,7 +39,8 @@ import { IngredientService } from './Services/ingredient.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    AppRoutingModule
   ],
   providers: [
     RecipeService,
