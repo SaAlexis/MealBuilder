@@ -1,14 +1,25 @@
-<p>ingredient works!</p>
-
+<br>
+<br>
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
+        
+        <div class="col-md-5">
+            <br>
             <app-ingredient-list></app-ingredient-list>
         </div>
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col-md-8">
+
+        <div class="col-md-2"></div>
+
+        <div class="col-md-5">
+            <div class="row">
+                <app-ingredient-edit></app-ingredient-edit>
+            </div>
+
+            <br><br>
+
+            <div class="row">
+                <router-outlet></router-outlet>
+            </div>
         </div>
     </div>
 </div>

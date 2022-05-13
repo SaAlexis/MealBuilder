@@ -1,1 +1,11 @@
-<p>ingredient-item works!</p>
+
+<a class="list-group-item clearfix" [routerLink]="[_index]" routerLinkActive="active"> 
+    <div class="pull-left">
+        <h4 class="list-group-item-heading">{{_ingredient._name}}</h4>
+        <p class="list-group-item-text">{{_ingredient._type}}</p>
+    </div>
+    <span class="pull-right">
+        <img [src]="_ingredient._imagePath" [alt]="_ingredient._name" class="img-responsive">
+    </span>
+</a>
+<br>

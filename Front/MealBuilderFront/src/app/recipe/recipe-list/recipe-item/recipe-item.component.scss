@@ -2,6 +2,14 @@ img {
     max-height: 75px;
 }
 
-.recipe-card {
-    background-color: azure;
+.pull-left {
+    width: 80%;
+}
+
+.pull-right {
+    width: 20%;
+}
+
+a {
+    display: flex;
 }

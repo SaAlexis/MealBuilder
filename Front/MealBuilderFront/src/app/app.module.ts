@@ -9,15 +9,15 @@ import { RecipeComponent } from './recipe/recipe.component';
 import { RecipeListComponent } from './recipe/recipe-list/recipe-list.component';
 import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.component';
 import { RecipeItemComponent } from './recipe/recipe-list/recipe-item/recipe-item.component';
-import { RecipeMenuComponent } from './recipe-menu/recipe-menu.component';
-import { RecipeMenuEditComponent } from './recipe-menu/recipe-menu-edit/recipe-menu-edit.component';
 import { IngredientItemComponent } from './ingredient/ingredient-list/ingredient-item/ingredient-item.component';
 import { IngredientListComponent } from './ingredient/ingredient-list/ingredient-list.component';
 import { RecipeEditComponent } from './recipe/recipe-edit/recipe-edit.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RecipeService } from './Services/recipe.service';
 import { IngredientService } from './Services/ingredient.service';
+import { IngredientEditComponent } from './ingredient/ingredient-edit/ingredient-edit.component';
+import { IngredientDetailComponent } from './ingredient/ingredient-detail/ingredient-detail.component';
 
 
 @NgModule({
@@ -29,17 +29,19 @@ import { IngredientService } from './Services/ingredient.service';
     RecipeListComponent,
     RecipeDetailComponent,
     RecipeItemComponent,
-    RecipeMenuComponent,
-    RecipeMenuEditComponent,
     IngredientItemComponent,
     IngredientListComponent,
     RecipeEditComponent,
+    IngredientEditComponent,
+    IngredientDetailComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    NgbModule
+    ReactiveFormsModule,
+    NgbModule,
+    AppRoutingModule
   ],
   providers: [
     RecipeService,

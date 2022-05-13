@@ -1,29 +1,47 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand">Navbar</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#" (click)="onSelect('ingredient')">Ingredients</a>
+          <li routerLinkActive="active" class="nav-item">
+            <a class="nav-link" aria-current="page" 
+              routerLink="/ingredients" >Ingredients</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="#" (click)="onSelect('recipe')">Recipes</a>
+
+            
+          <li routerLinkActive="active" ngbDropdown class="nav-item ">
+            <button ngbDropdownToggle class="btn nav-item btn-dark" type="button" id="ddRecipes" routerLink="/recipes" >Recipes</button>
+          
+            <ul ngbDropdownMenu aria-labelledby="ddRecipes">
+              <li><a ngbDropdownItem routerLink="/newRecipe" >Add New Recipe</a></li>
+              <li><a ngbDropdownItem routerLink="/recipes" >List of Recipes</a></li>
+            </ul>
           </li>
-          <li ngbDropdown class="dropdown">
+
+
+
+
+
+
+
+
+          <li routerLinkActive="active" class="nav-item">
+            <a class="nav-link" 
+              routerLink="/recipes" >Menus</a>
+          </li>
+
+          <li routerLinkActive="active" ngbDropdown class="nav-item dropdown">
             <button ngbDropdownToggle class="btn btn-dark" type="button" id="dropdownMenuButton1" aria-expanded="false">
           Dropdown
           </button>
             <ul ngbDropdownMenu aria-labelledby="dropdownMenuButton1">
-              <li><a ngbDropdownItem href="#">Action</a></li>
-              <li><a ngbDropdownItem href="#">Another action</a></li>
-              <li><a ngbDropdownItem href="#">Something else here</a></li>
+              <li><a ngbDropdownItem >Action</a></li>
+              <li><a ngbDropdownItem >Another action</a></li>
+              <li><a ngbDropdownItem >Something else here</a></li>
             </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" (click)="onSelect('menu')">Menus</a>
           </li>
           <li class="nav-item">
             <a class="nav-link disabled">Disabled</a>

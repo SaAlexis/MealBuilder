@@ -1,15 +1,11 @@
 
-<div class="row">
-    <div class="col-xs-12">
-        <a href="#" class="list-group list-group-horizontal recipe-card" (click)="onSelected()"> 
-            <div class="col-md-8">
-                <h4 class="list-group-item-heading">{{_recipe._name}}</h4>
-                <p class="list-group-item-text">{{_recipe._note}}</p>
-            </div>
-            <div class="col-md-4">
-                <img [src]="_recipe._imagePath" [alt]="_recipe._name" class="img-responsive">
-            </div>
-        </a>
-        <br>
+<a class="list-group-item clearfix" [routerLink]="[_index]" routerLinkActive="active"> 
+    <div class="pull-left">
+        <h4 class="list-group-item-heading">{{_recipe._name}}</h4>
+        <p class="list-group-item-text">{{_recipe._note}}</p>
     </div>
-</div>
+    <span class="pull-right">
+        <img [src]="_recipe._imagePath" [alt]="_recipe._name" class="img-responsive">
+    </span>
+</a>
+<br>

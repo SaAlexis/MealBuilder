@@ -1,0 +1,84 @@
+<div class="row">
+    <div class="col-xs-12">
+        <h3>Add New Ingredient</h3>
+
+        <form action="" (ngSubmit)="onSubmit(f)" #f="ngForm">
+
+            <div class="row">
+                <div class="col-sm-6 form-group">
+                    <label for="name">Name</label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        name="name" 
+                        class="form-control" 
+                        ngModel
+                        required
+                    >
+                </div>
+                <!-- <div class="col-sm-6 form-group">
+                    <label for="amount">Amount</label>
+                    <input 
+                        type="number" 
+                        id="amount" 
+                        name="amount" 
+                        class ="form-control" 
+                        ngModel
+                        pattern="^[1-9]+[0-9]*$"
+                    >
+                </div> -->
+                
+            </div>
+            
+            <div class="row">
+                <div class="col-sm-6 form-group">
+                    <br>
+                    <input 
+                        type="radio" 
+                        class="btn-check" 
+                        name="type" 
+                        id="fruit" 
+                        value="fruit"
+                        ngModel
+                    >
+                    <label class="btn btn-outline-primary" for="fruit">Fruit</label>
+
+                    <input 
+                        type="radio" 
+                        class="btn-check" 
+                        name="type" 
+                        id="vegetable" 
+                        value="vegetable"
+                        ngModel
+                    >
+                    <label class="btn btn-outline-success" for="vegetable">Vegetable</label>
+                    <br>
+                    <br>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    <label for="imagePath">Path of the picture</label>
+                    <input 
+                        type="text" 
+                        id="imagePath" 
+                        name="imagePath" 
+                        class ="form-control" 
+                        ngModel
+                    >
+                </div>
+            </div>
+
+            <br>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <button class="btn btn-success" type="submit" [disabled]="!f.valid">{{ _editMode ? 'Update' : 'Add' }}</button>
+                    <button class="btn btn-danger" type="button"  (click)="DeleteIngredient()" *ngIf="_editMode">Delete</button>
+                    <button class="btn btn-primary" type="button" (click)="ResetForm()">Clear</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
