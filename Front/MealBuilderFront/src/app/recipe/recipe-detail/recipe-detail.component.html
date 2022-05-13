@@ -19,9 +19,8 @@
             </a>
     
             <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" >Add</a>
               <a class="dropdown-item" (click)="EditRecipe()" >Edit</a>
-              <a class="dropdown-item" >Something else here</a>
+              <a class="dropdown-item" (click)="DeleteRecipe()" >Delete</a>
             </div>
         </div>
     </div>
@@ -38,7 +37,8 @@
         <a class="list-group list-group-horizontal fruit-card"> 
             <div class="col-md-8">
                 <h4 class="list-group-item-heading">{{item._name}}</h4>
-                <p class="list-group-item-text">{{item._type}}</p>
+                <p class="list-group-item-text">{{item._amount}}</p>
+                
             </div>
             <div class="col-md-4">
                 <img [src]="item._imagePath" [alt]="item._name" class="img-responsive">

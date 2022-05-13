@@ -12,8 +12,8 @@ export class RecipeService {
     constructor(private ingredientService: IngredientService) {}
 
     private _recipes: Recipe[] = [
-        new Recipe('Recipe 1', 'Blablabla', 'https://img.buzzfeed.com/video-api-prod/assets/eb44570519264864814264f7f0a5e47a/BFV13909_BakedRatatouille-ThumbTextless1080.jpg?resize=1200:*',this.ingredientService.getIngredients()),
-        new Recipe('Recipe 2', 'Blablabla', 'https://img.buzzfeed.com/video-api-prod/assets/eb44570519264864814264f7f0a5e47a/BFV13909_BakedRatatouille-ThumbTextless1080.jpg?resize=1200:*',this.ingredientService.getIngredients()),
+        new Recipe('Recipe 1', 'Blablabla', 'https://img.buzzfeed.com/video-api-prod/assets/eb44570519264864814264f7f0a5e47a/BFV13909_BakedRatatouille-ThumbTextless1080.jpg?resize=1200:*',[]),
+        new Recipe('Recipe 2', 'Blablabla', 'https://img.buzzfeed.com/video-api-prod/assets/eb44570519264864814264f7f0a5e47a/BFV13909_BakedRatatouille-ThumbTextless1080.jpg?resize=1200:*',[]),
         new Recipe('Recipe 3', 'Blablabla', 'https://img.buzzfeed.com/video-api-prod/assets/eb44570519264864814264f7f0a5e47a/BFV13909_BakedRatatouille-ThumbTextless1080.jpg?resize=1200:*',this.ingredientService.getIngredients()),
         new Recipe('Recipe 4', 'Blablabla', 'https://img.buzzfeed.com/video-api-prod/assets/eb44570519264864814264f7f0a5e47a/BFV13909_BakedRatatouille-ThumbTextless1080.jpg?resize=1200:*',this.ingredientService.getIngredients())
     ];
@@ -29,6 +29,16 @@ export class RecipeService {
 
     public addRecipe(recipe: Recipe) {
         this._recipes.push(recipe);
+        this._recipesChanged.next(this._recipes.slice());
+    }
+
+    public updateRecipe(index: number, recipe: Recipe) {
+        this._recipes[index] = recipe;
+        this._recipesChanged.next(this._recipes.slice());
+    }
+
+    public deleteRecipe(index: number) {
+        this._recipes.splice(index,1);
         this._recipesChanged.next(this._recipes.slice());
     }
 }

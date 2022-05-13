@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Ingredient } from '../../ingredient-model';
 
 @Component({
   selector: 'app-ingredient-item',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IngredientItemComponent implements OnInit {
 
+  @Input() _ingredient: Ingredient = new Ingredient(0,'','','',1);
+  @Input() _index: number = 0;
+
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }
